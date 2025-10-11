@@ -19,3 +19,24 @@ export interface ApiResponse<T> {
   }[];
   timestamp: string;
 }
+
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role?: {
+    id: string;
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+  code?: string;
+  isVerified?: boolean;
+  lastLogin?: string;
+}

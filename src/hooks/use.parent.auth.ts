@@ -1,11 +1,16 @@
-import { useMutation } from '@tanstack/react-query';
-import { loginUser, registerUser, verifyEmail } from '../api/parents.auth';
-import { ApiResponse } from '../types/api.types';
+import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+  loginUser,
+  registerUser,
+  verifyEmail,
+  getParentUser,
+} from "../api/parents.auth";
+import { ApiResponse } from "../types/api.types";
 import {
   AuthResponse,
   LoginCredentials,
   RegisterCredentials,
-} from '../types/parents.type';
+} from "../types/parents.type";
 
 export const useLogin = () => {
   return useMutation<ApiResponse<AuthResponse>, Error, LoginCredentials>({
@@ -22,5 +27,12 @@ export const useRegister = () => {
 export const useVerifyEmail = () => {
   return useMutation<ApiResponse<null>, Error, string>({
     mutationFn: verifyEmail,
+  });
+};
+
+export const useGetParentUser = <T>() => {
+  return useQuery<ApiResponse<T>, Error>({
+    queryKey: ["parentUser"],
+    queryFn: () => getParentUser<T>(),
   });
 };

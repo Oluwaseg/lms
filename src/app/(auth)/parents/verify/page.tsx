@@ -1,10 +1,10 @@
 "use client";
 
-import { useVerifyEmail } from "@/hooks/use.student.auth";
+import { useVerifyEmail } from "@/hooks/use.parent.auth";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const StudentVerifyEmailPage = () => {
+const Verify = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
@@ -19,7 +19,7 @@ const StudentVerifyEmailPage = () => {
   useEffect(() => {
     if (verifyMutation.isSuccess) {
       setTimeout(() => {
-        window.location.href = "/students/login";
+        window.location.href = "/parents/login";
       }, 3000);
     }
   }, [verifyMutation.isSuccess]);
@@ -49,4 +49,4 @@ const StudentVerifyEmailPage = () => {
   );
 };
 
-export default StudentVerifyEmailPage;
+export default Verify;
