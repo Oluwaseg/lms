@@ -21,7 +21,7 @@ export interface ApiResponse<T> {
 }
 
 export interface AuthResponse {
-  token: string;
+  token?: string;
   user: User;
 }
 

@@ -1,10 +1,12 @@
 "use client";
 
 import { useLogin } from "@/hooks/use.student.auth";
+import { useCheckSession } from "@/hooks/useCheckSession";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const StudentLoginPage = () => {
+  useCheckSession(); // This will redirect to /students if already logged in
   const loginMutation = useLogin();
   const router = useRouter();
   const [form, setForm] = useState({

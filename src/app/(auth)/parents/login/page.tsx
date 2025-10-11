@@ -1,10 +1,12 @@
 "use client";
 
 import { useLogin } from "@/hooks/use.parent.auth";
+import { useCheckSession } from "@/hooks/useCheckSession";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
+  useCheckSession(); // This will redirect to /parents if already logged in
   const loginMutation = useLogin();
   const router = useRouter();
 
